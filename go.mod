@@ -1,0 +1,1 @@
+module "hy-go-function"

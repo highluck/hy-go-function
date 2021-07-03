@@ -3,15 +3,15 @@ package hy_go_function
 type operation string
 
 const (
-	filter = operation("filter")
-	maps   = operation("map")
-	flatMap   = operation("flatmap")
+	filter  = operation("filter")
+	maps    = operation("map")
+	flatMap = operation("flatmap")
 )
 
 type DSL struct {
-	function   []interface{}
-	value      interface{}
-	operations []operation
+	function      []interface{}
+	value         interface{}
+	operations    []operation
 }
 
 func Of(value interface{}) DSL {
@@ -37,5 +37,3 @@ func (d DSL) Map(function interface{}) DSL {
 	d.function = append(d.function, function)
 	return d
 }
-
-

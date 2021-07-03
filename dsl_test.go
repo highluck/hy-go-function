@@ -91,7 +91,7 @@ func Test_map(t *testing.T) {
 
 	println(fmt.Sprintf("result : %v", result))
 
-	result2 := internal.DoMap(1, func(i int) int { return i + 1})
+	result2 := internal.DoMap(1, func(i int) int { return i + 1 })
 
 	println(fmt.Sprintf("result2 : %v", result2))
 }
@@ -106,8 +106,25 @@ func Test_flatmap(t *testing.T) {
 
 	println(fmt.Sprintf("result : %v", result))
 
-	result2 := internal.DoMap(1, func(i int) int { return i + 1})
+	result2 := internal.DoMap(1, func(i int) int { return i + 1 })
 
 	println(fmt.Sprintf("result2 : %v", result2))
 }
 
+func Test_reduce(t *testing.T) {
+	array := []int{
+		1, 2, 3,
+	}
+
+	var result = internal.DoReduce(array, func(x int, y int) int {
+		return x + y
+	}, 0).(int)
+
+	println(fmt.Sprintf("result : %v", result))
+
+	var result2 = internal.DoReduce(array, func(x string, y int) string {
+		return x + "," + strconv.Itoa(y)
+	}, "").(string)
+
+	println(fmt.Sprintf("result2 : %v", result2))
+}

@@ -19,3 +19,8 @@ func (d DSL) Execute() interface{} {
 	}
 	return d.value
 }
+
+func (d DSL) Reduce(function interface{}, initial interface{}) interface{} {
+	results := d.Execute()
+	return internal.DoReduce(results, function, initial)
+}
